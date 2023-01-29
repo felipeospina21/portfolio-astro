@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Landing from '../components/Landing/Landing';
+import { NavBar } from '../components/NavBar/NavBar';
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+    <NavBar/>
+    <Landing client:load />
+	</main>
+</Layout>
+
