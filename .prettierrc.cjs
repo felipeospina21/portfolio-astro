@@ -1,15 +1,16 @@
 module.exports = {
   singleQuote: true,
-  arrowParens: "always",
+  arrowParens: 'always',
   tabWidth: 2,
   printWidth: 100,
   jsxSingleQuote: true,
-  plugins: [require.resolve("prettier-plugin-astro")],
+  plugins: [require.resolve('prettier-plugin-astro'), require('prettier-plugin-tailwindcss')],
+  pluginSearchDirs: false,
   overrides: [
     {
-      files: "*.astro",
+      files: '*.astro',
       options: {
-        parser: "astro",
+        parser: 'astro',
       },
     },
   ],

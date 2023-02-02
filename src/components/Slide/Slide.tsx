@@ -15,10 +15,10 @@ export function Slide({ id, children }: SlideProps) {
   const y = useParallax(scrollYProgress, 300);
 
   return (
-    <section className='flex flex-col justify-center items-center h-screen bg-home-gradient snap-center'>
+    <section className='flex h-screen snap-center flex-col items-center justify-center bg-home-gradient'>
       <div
         ref={ref}
-        className='flex flex-col align-center justify-around h-1/3  text-slate-100 font-title'
+        className='align-center flex h-2/3 w-full flex-col justify-around font-title text-slate-100'
       >
         {children}
       </div>

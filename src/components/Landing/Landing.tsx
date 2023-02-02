@@ -1,6 +1,7 @@
-import { motion, useScroll, useSpring } from "framer-motion";
-import { Intro } from "../Intro/Intro";
-import { Slide } from "../Slide/Slide";
+import { motion, useScroll, useSpring } from 'framer-motion';
+import { Intro } from '../Intro/Intro';
+import { Skills } from '../Skills/Skills';
+import { Slide } from '../Slide/Slide';
 
 function Landing(): JSX.Element {
   const { scrollYProgress } = useScroll();
@@ -15,15 +16,12 @@ function Landing(): JSX.Element {
         <Intro />
       </Slide>
       <Slide id={2}>
-        <Intro />
+        <Skills />
       </Slide>
       <Slide id={3}>
         <Intro />
       </Slide>
-      <motion.div
-        className="fixed left-0 right-0 h-1 bottom-32 bg-black"
-        style={{ scaleX }}
-      />
+      <motion.div className='fixed left-0 right-0 bottom-32 h-1 bg-black' style={{ scaleX }} />
     </div>
   );
 }
