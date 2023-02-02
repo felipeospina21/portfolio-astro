@@ -4,27 +4,22 @@ type VisibilityTransitionProps = {
   children: JSX.Element | JSX.Element[];
 };
 
-export default function VisibilityTransition({ children }: VisibilityTransitionProps) {
+export function VisibilityTransition({ children }: VisibilityTransitionProps) {
   const variants = {
     visible: {
       opacity: 1,
-      display: "flex",
+      display: 'flex',
       transition: {
         delay: 0.2,
         duration: 2,
-        ease: "easeInOut",
+        ease: 'easeInOut',
       },
     },
     hidden: { opacity: 0 },
   };
 
   return (
-    <motion.span
-      variants={variants}
-      initial="hidden"
-      animate="visible"
-      className="my-0 mx-auto"
-    >
+    <motion.span variants={variants} initial='hidden' animate='visible' className='my-0 mx-auto'>
       {children}
     </motion.span>
   );

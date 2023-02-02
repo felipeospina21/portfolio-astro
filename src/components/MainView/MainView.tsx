@@ -1,9 +1,8 @@
 import { motion, useScroll, useSpring } from 'framer-motion';
-import { Intro } from '../Intro/Intro';
-import { Skills } from '../Skills/Skills';
-import { Slide } from '../Slide/Slide';
+import { Intro, Projects, Skills } from '../../slides';
+import { Slide } from '../Slide';
 
-function Landing(): JSX.Element {
+function MainView(): JSX.Element {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -19,11 +18,11 @@ function Landing(): JSX.Element {
         <Skills />
       </Slide>
       <Slide id={3}>
-        <Intro />
+        <Projects />
       </Slide>
       <motion.div className='fixed left-0 right-0 bottom-32 h-1 bg-black' style={{ scaleX }} />
     </div>
   );
 }
 
-export default Landing;
+export default MainView;

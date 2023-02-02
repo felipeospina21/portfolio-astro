@@ -1,5 +1,4 @@
-import AnimatedDiv from './AnimatedDiv';
-import VisibilityTransition from './VisibilityTransition';
+import { AnimatedDiv, VisibilityTransition } from '../../components';
 
 export function Intro() {
   return (
@@ -9,7 +8,7 @@ export function Intro() {
           <h1 className='text-8xl font-black'>Felipe Ospina</h1>
         </VisibilityTransition>
         <VisibilityTransition>
-          <h3 className='text-2xl my-6'>Front-End Dev</h3>
+          <h3 className='my-6 text-2xl'>Front-End Dev</h3>
         </VisibilityTransition>
       </AnimatedDiv>
 
@@ -18,7 +17,7 @@ export function Intro() {
           href='http://api.whatsapp.com/send?phone=573148871629'
           rel='noreferrer'
           target='_blank'
-          className='bg-primary-contrast text-text-main font-bold py-2 px-5 rounded-md font-sans'
+          className='rounded-md bg-primary-contrast py-2 px-5 font-sans font-bold text-text-main'
         >
           Conversemos
         </a>
