@@ -1,10 +1,10 @@
 import React from 'react';
-import { Title } from '../../components';
+import { SlideTitle } from '../../components';
 
 export function Projects(): JSX.Element {
   return (
     <div>
-      <Title text='Projects' />
+      <SlideTitle>Projects</SlideTitle>
     </div>
   );
 }

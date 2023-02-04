@@ -1,0 +1,49 @@
+---
+import '@fontsource/montserrat';
+import '@fontsource/lato';
+import '@fontsource/lato/900.css';
+import '@fontsource/lato/700.css';
+import HeaderRow from '../components/ProjectLayout/HeaderRow.astro';
+import ProjectTitle from '../components/ProjectLayout/ProjectTitle.astro';
+import ProjectLinks from '../components/ProjectLayout/ProjectLinks.astro';
+import { NavBar } from '../components';
+import { formatDateString } from '../utils/formatDate';
+
+import type { MarkdownLayoutProps } from 'astro';
+import type { ProjectFrontmatter } from '../types';
+
+type Props = MarkdownLayoutProps<ProjectFrontmatter>;
+
+const { frontmatter, url } = Astro.props;
+const formatedDate = formatDateString(frontmatter.date);
+const joinedTags = frontmatter.tags.join(', ');
+---
+
+<html>
+  <head>
+    <!-- <link rel="canonical" href={new URL(url ?? '', Astro.site).pathname}> -->
+    <title>{frontmatter.title}</title>
+  </head>
+  <body class='bg-text-light bg-no-repeat text-text-main'>
+    <header>
+      <NavBar />
+    </header>
+    <main class='h-screen px-14 py-8'>
+      <ProjectTitle text={frontmatter.title} />
+
+      <div class='mb-4 grid w-full grid-cols-project-header grid-rows-4 font-title text-sm'>
+        <HeaderRow label='Client' value={frontmatter.client} />
+        <HeaderRow label='Role' value={frontmatter.role} />
+        <HeaderRow label='Date' value={formatedDate} />
+        <HeaderRow label='Tags' value={joinedTags} />
+      </div>
+
+      <img src={frontmatter.image.url} alt={frontmatter.image.alt} />
+
+      <div class='my-4 flex h-1/4 flex-col justify-around'>
+        <slot />
+      </div>
+      <ProjectLinks links={frontmatter.links} />
+    </main>
+  </body>
+</html>

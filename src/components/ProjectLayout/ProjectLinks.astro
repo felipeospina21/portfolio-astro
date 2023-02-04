@@ -1,0 +1,19 @@
+---
+import type { ProjectLink } from '../../types';
+
+interface Props {
+  links: ProjectLink[];
+}
+
+const { links } = Astro.props;
+---
+
+<ul>
+  {
+    links.map((link) => (
+      <li class='text-primary-contrast'>
+        <a href={link.url}>{link.title}</a>
+      </li>
+    ))
+  }
+</ul>
