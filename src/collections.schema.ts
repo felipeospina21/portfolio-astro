@@ -14,7 +14,7 @@ export const projectLinkSchema = z.object({
 export const projectSchema = z.object({
   title: z.string(),
   client: z.string(),
-  date: z.string(),
+  date: z.date(),
   description: z.string(),
   role: z.string(),
   tags: z.array(z.string()),

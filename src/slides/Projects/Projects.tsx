@@ -1,10 +1,17 @@
-import React from 'react';
-import { SlideTitle } from '../../components';
+import React, { useRef } from 'react';
+import { SlideTitle, Container, VisibilityTransition } from '../../components';
+import { useInView } from 'framer-motion';
 
 export function Projects(): JSX.Element {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref);
   return (
-    <div>
-      <SlideTitle>Projects</SlideTitle>
-    </div>
+    <Container ref={ref}>
+      {isInView ? (
+        <VisibilityTransition>
+          <SlideTitle>Projects</SlideTitle>
+        </VisibilityTransition>
+      ) : null}
+    </Container>
   );
 }

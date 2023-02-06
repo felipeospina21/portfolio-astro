@@ -2,9 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import MainView from '../components';
 import { NavBar } from '../components/NavBar/NavBar';
+import { getCollection } from 'astro:content';
+const projects = await getCollection('projects')
 ---
 
 <Layout title='Welcome to Astro.'>
   <NavBar />
-  <MainView client:load />
+  <MainView client:load projects={projects}/>
 </Layout>
