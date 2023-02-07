@@ -1,3 +1,4 @@
+import React from 'react';
 import { AnimatedDiv, VisibilityTransition } from '../../components';
 
 export function Intro() {

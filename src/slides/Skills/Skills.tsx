@@ -1,5 +1,5 @@
 import React from 'react';
-import { AnimatedImg, SlideTitle, Container } from '../../components';
+import { AnimatedImg, SlideTitle, Container, VisibilityTransition } from '../../components';
 import { techImagesProps } from './techImagesProps';
 
 export function Skills(): JSX.Element {
@@ -8,7 +8,9 @@ export function Skills(): JSX.Element {
       <SlideTitle>Skills</SlideTitle>
       <div className='grid h-3/4 w-2/4 grid-cols-4 items-center justify-items-center gap-8'>
         {techImagesProps.map((props, idx) => (
-          <AnimatedImg key={idx} {...props} />
+          <VisibilityTransition delay={0.6}>
+            <AnimatedImg key={idx} {...props} />
+          </VisibilityTransition>
         ))}
       </div>
     </Container>

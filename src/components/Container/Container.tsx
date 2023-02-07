@@ -1,7 +1,6 @@
 import React from 'react';
-import type { HTMLAttributes, DetailedHTMLProps, ForwardedRef } from 'react';
-
-type ContainerProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+import type { ForwardedRef } from 'react';
+import type { ContainerProps } from '../../types';
 
 export const Container = React.forwardRef(
   (props: ContainerProps, ref: ForwardedRef<HTMLDivElement>) => {

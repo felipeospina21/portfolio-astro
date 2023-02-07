@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView, MotionValue } from 'framer-motion';
 import { useRef } from 'react';
 
 function useParallax(value: MotionValue<number>, distance: number) {
@@ -10,7 +10,8 @@ type SlideProps = {
   id: number;
 };
 export function Slide({ id, children }: SlideProps) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref);
   const { scrollYProgress } = useScroll({ target: ref });
   const y = useParallax(scrollYProgress, 300);
 
@@ -18,9 +19,9 @@ export function Slide({ id, children }: SlideProps) {
     <section className='m-auto flex h-screen snap-center flex-col items-center justify-center bg-home-gradient'>
       <div
         ref={ref}
-        className='align-center flex h-2/3 w-full flex-col justify-around font-title text-slate-100 '
+        className='align-center flex h-2/3 w-full flex-col justify-around overflow-hidden font-title text-slate-100'
       >
-        {children}
+        {isInView ? children : null}
       </div>
       <motion.h2
         style={{ y }}

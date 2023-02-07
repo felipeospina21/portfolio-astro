@@ -2,15 +2,16 @@ import { motion } from 'framer-motion';
 
 type VisibilityTransitionProps = {
   children: JSX.Element | JSX.Element[];
+  delay?: number;
 };
 
-export function VisibilityTransition({ children }: VisibilityTransitionProps) {
+export function VisibilityTransition({ children, delay }: VisibilityTransitionProps) {
   const variants = {
     visible: {
       opacity: 1,
       display: 'flex',
       transition: {
-        delay: 0.2,
+        delay: delay ?? 0.2,
         duration: 2,
         ease: 'easeInOut',
       },
