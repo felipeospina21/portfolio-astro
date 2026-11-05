@@ -1,54 +1,69 @@
-# Astro Starter Kit: Basics
+# portfolio-astro
 
-```
-npm create astro@latest -- --template basics
-```
+My personal developer portfolio, built with [Astro](https://astro.build/) and React. It's a single-page, slide-style site (intro, projects, skills) with a separate page for each project.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/s/github/withastro/astro/tree/latest/examples/basics)
+This is the second iteration of my portfolio. It replaces [`portfolio-test`](https://github.com/felipeospina21/portfolio-test), the original plain HTML prototype.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Features
 
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
+- **Slides**: Intro, Projects and Skills sections with scroll and visibility animations (Framer Motion)
+- **Project pages**: each project is a markdown file with typed frontmatter (title, client, date, role, tags, image, links)
+- **Typed content**: the `projects` content collection is validated with a Zod schema
+- **Skills grid**: technology icons for my main stack
 
+## Tech stack
 
-## 🚀 Project Structure
+- Astro 2 with the React and Tailwind integrations
+- React 18 and TypeScript
+- Tailwind CSS
+- Framer Motion and React Icons
+- ESLint, Prettier, Husky and lint-staged
 
-Inside of your Astro project, you'll see the following folders and files:
+## Getting started
 
-```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+pnpm install
+pnpm dev        # Dev server at http://localhost:8080
+pnpm build      # Production build to ./dist
+pnpm preview    # Preview the production build
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Adding a project
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Create a markdown file in `src/content/projects/`. The frontmatter must match the schema in `src/collections.schema.ts`:
 
-Any static assets, like images, can be placed in the `public/` directory.
+```md
+---
+layout: ../../layouts/Project.astro
+client: 'Client name'
+title: 'Project title'
+date: 2023-01-01
+description: 'One-line description'
+role: 'Developer'
+image:
+  url: '/image.jpg'
+  alt: 'Image description'
+tags: ['React', 'TypeScript']
+links:
+  - url: 'https://github.com/...'
+    title: 'GitHub'
+---
 
-## 🧞 Commands
+Project description in markdown.
+```
 
-All commands are run from the root of the project, from a terminal:
+Put the image in `public/`.
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run dev`          | Starts local dev server at `localhost:3000`      |
-| `npm run build`        | Build your production site to `./dist/`          |
-| `npm run preview`      | Preview your build locally, before deploying     |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro --help` | Get help using the Astro CLI                     |
+## Project structure
 
-## 👀 Want to learn more?
+```
+src/
+├── content/projects/   # Project entries (markdown)
+├── slides/             # Intro, Projects, Skills
+├── components/         # NavBar, Slide, ProjectCard, animations, typography
+├── layouts/            # Base layout and project layout
+├── pages/              # index and project routes
+└── collections.schema.ts
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+> Experimental and outdated (Astro 2, early 2023). Not actively maintained.
